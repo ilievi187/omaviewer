@@ -1,5 +1,7 @@
 # OmaViewer — Fast, Modern FOSS PDF Studio
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20OmaViewer-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/aurorauap)
+
 **OmaViewer** is a 100% offline, privacy-first, cross-platform FOSS PDF Viewer & Studio built with **Tauri v2 (Rust)** + **React / TypeScript**.
 
 ## Features
@@ -31,6 +33,13 @@ npm run tauri build
 npx tauri android init
 npx tauri android build
 ```
+
+## Support the Project
+
+OmaViewer is 100% free, open-source, and offline — no subscriptions, no paywalls, no tracking.
+If it saves you time or money, consider supporting development:
+
+☕ **[Buy Me a Coffee](https://buymeacoffee.com/aurorauap)**
 
 ## License
 MIT

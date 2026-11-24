@@ -55,6 +55,9 @@ jobs:
             Download the installer for your platform below:
             - **Windows**: `.exe` (NSIS setup) or `.msi`
             - **Linux**: `.AppImage`, `.deb`, or `.rpm`
+
+            ---
+            ☕ Enjoying OmaViewer? [Buy Me a Coffee](https://buymeacoffee.com/aurorauap) to support future updates!
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
