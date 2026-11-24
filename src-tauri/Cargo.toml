@@ -1,0 +1,23 @@
+[package]
+name = "omaviewer"
+version = "0.1.0"
+description = "OmaViewer — Fast, modern, 100% offline FOSS PDF Viewer & Studio"
+authors = ["OmaViewer Contributors"]
+license = "MIT"
+edition = "2021"
+
+[lib]
+name = "omaviewer_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dirs = "6"
+tempfile = "3"
