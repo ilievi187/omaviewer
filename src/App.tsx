@@ -29,6 +29,7 @@ import {
   Image as ImageIcon,
   ShieldCheck,
   Sparkles,
+  Coffee,
   X,
 } from "lucide-react";
 import { BUILTIN_THEMES, applyThemeToRoot, type ThemeDefinition } from "./lib/themes";
@@ -36,6 +37,7 @@ import {
   getCapabilities,
   getCliFile,
   getOmarchyTheme,
+  openExternalUrl,
   pickPdfFile,
   saveBytesToDisk,
   type SystemCapabilities,
@@ -596,6 +598,17 @@ export default function App() {
             <span className="hidden lg:inline">Tools</span>
           </button>
 
+          <button
+            type="button"
+            onClick={() => openExternalUrl("https://buymeacoffee.com/aurorauap")}
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium cursor-pointer"
+            style={{ background: "var(--surface-alt)", color: "var(--text)" }}
+            title="Support OmaViewer on Buy Me a Coffee"
+          >
+            <Coffee size={14} className="text-amber-400" />
+            <span className="hidden xl:inline">Support</span>
+          </button>
+
           {/* Theme dropdown */}
           <div className="relative">
             <button
@@ -893,6 +906,21 @@ export default function App() {
                     </div>
                   </button>
                 ))}
+              </div>
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => openExternalUrl("https://buymeacoffee.com/aurorauap")}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold border cursor-pointer transition-transform hover:scale-[1.02]"
+                  style={{
+                    background: "var(--surface)",
+                    borderColor: "var(--border)",
+                    color: "var(--text)",
+                  }}
+                >
+                  <Coffee size={14} className="text-amber-400" />
+                  Support OmaViewer — Buy Me a Coffee
+                </button>
               </div>
             </div>
           )}

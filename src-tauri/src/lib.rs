@@ -390,6 +390,21 @@ fn ocr_pdf(data: Vec<u8>, lang: String) -> Result<Vec<u8>, String> {
     fs::read(&out_pdf).map_err(|e| format!("Failed to read OCR output: {}", e))
 }
 
+#[tauri::command]
+fn open_external_url(url: String) -> Result<(), String> {
+    if !(url.starts_with("https://") || url.starts_with("http://")) {
+        return Err("Only http/https URLs are allowed.".to_string());
+    }
+    #[cfg(target_os = "windows")]
+    let status = Command::new("cmd").args(["/C", "start", "", &url]).spawn();
+    #[cfg(target_os = "macos")]
+    let status = Command::new("open").arg(&url).spawn();
+    #[cfg(all(unix, not(target_os = "macos")))]
+    let status = Command::new("xdg-open").arg(&url).spawn();
+
+    status.map(|_| ()).map_err(|e| format!("Failed to open URL: {}", e))
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -404,7 +419,8 @@ pub fn run() {
             compress_pdf,
             protect_pdf,
             unlock_pdf,
-            ocr_pdf
+            ocr_pdf,
+            open_external_url
         ])
         .run(tauri::generate_context!())
         .expect("error while running OmaViewer");
