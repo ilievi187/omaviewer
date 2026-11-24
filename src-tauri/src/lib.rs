@@ -41,7 +41,12 @@ pub struct FilePayload {
 }
 
 fn command_exists(cmd: &str) -> bool {
-    Command::new("which")
+    #[cfg(target_os = "windows")]
+    let probe = "where";
+    #[cfg(not(target_os = "windows"))]
+    let probe = "which";
+
+    Command::new(probe)
         .arg(cmd)
         .output()
         .map(|o| o.status.success())
